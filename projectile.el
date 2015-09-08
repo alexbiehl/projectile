@@ -219,6 +219,7 @@ Two example filter functions are shipped by default -
     "composer.json"      ; Composer project file
     "Cargo.toml"         ; Cargo project file
     "mix.exs"            ; Elixir mix project file
+    "stack.yaml"         ; Haskells stack tool based project
     )
   "A list of files considered to mark the root of a project.
 The topmost match has precedence."
@@ -279,7 +280,8 @@ containing a root file."
     ".bzr"
     "_darcs"
     ".tox"
-    ".svn")
+    ".svn"
+    ".stack-work")
   "A list of directories globally ignored by projectile."
   :group 'projectile
   :type '(repeat string))
@@ -1535,6 +1537,7 @@ a COMPILE-COMMAND and a TEST-COMMAND."
 (projectile-register-project-type 'grunt '("Gruntfile.js") "grunt" "grunt test")
 (projectile-register-project-type 'gulp '("gulpfile.js") "gulp" "gulp test")
 (projectile-register-project-type 'haskell-cabal '("*.cabal") "cabal build" "cabal test")
+(projectile-register-project-type 'haskell-stack '("stack.yaml") "stack build" "stack build --test")
 (projectile-register-project-type 'rust-cargo '("Cargo.toml") "cargo build" "cargo test")
 (projectile-register-project-type 'r '("DESCRIPTION") "R CMD INSTALL ." (concat "R CMD check -o " temporary-file-directory " ."))
 (projectile-register-project-type 'go #'projectile-go "go build ./..." "go test ./...")
